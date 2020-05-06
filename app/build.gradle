@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "me.alexeygusev.testtask"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    compileOnly libraries.jetbrainsJavaAnnotation
+
+    implementation(libraries.kotlin) {
+        exclude group: 'org.jetbrains'
+    }
+
+    implementation libraries.rxJava2
+
+    // AndroidX
+    implementation libraries.xAnnotations
+    implementation libraries.xAppCompat
+    implementation libraries.xCoreKtx
+    implementation libraries.xConstraintLayout
+    implementation libraries.xLifecycle
+    implementation libraries.xRecyclerView
+
+    // Koin
+    implementation libraries.koinAndroidScope
+
+    // Misc
+    implementation libraries.glide
+    implementation libraries.materialComponents
+    implementation libraries.timberExplicit
+
+    // Retrofit
+    implementation libraries.retrofit
+    implementation libraries.retrofitRxJava2
+    implementation libraries.retrofitScalars
+    implementation libraries.retrofitMoshiConverter
+    implementation libraries.okhttpInterceptor
+
+    // RxJava
+    implementation libraries.rxAndroid2
+    implementation libraries.rxBinding2
+    implementation libraries.rxBinding2AppCompatV7
+    implementation libraries.rxJava2
+
+    // JSON Parsing
+    implementation libraries.moshi
+    implementation libraries.moshiAdapters
+    implementation libraries.moshiKotlin
+    kapt libraries.moshiKotlinCodegen
+
+    testImplementation libraries.assertJ
+    testImplementation libraries.junit
+    testImplementation libraries.mockitoInline
+    testImplementation libraries.kotlinReflection
+    testImplementation(libraries.mockitoKotlin) {
+        exclude group: 'org.mockito'
+        exclude group: 'org.jetbrains.kotlin'
+    }
+
+    androidTestImplementation libraries.espressoCore
+}

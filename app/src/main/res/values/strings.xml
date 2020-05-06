@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TestTask</string>
+    <string name="content_image">image</string>
+    <string name="details_title">Image ID: %d</string>
+    <string name="send_email">Send Email</string>
+    <string name="send_email_title">Send mail...</string>
+    <string name="email_error">There is no email client installed.</string>
+</resources>
